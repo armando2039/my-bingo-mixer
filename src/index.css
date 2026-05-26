@@ -19,3 +19,19 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
   -webkit-tap-highlight-color: transparent;
 }
+
+@keyframes pop {
+  0% { transform: scale(0.96); opacity: 0.9; }
+  50% { transform: scale(1.06); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.animate-pop {
+  animation: pop 260ms cubic-bezier(.2,.8,.2,1);
+}
+
+/* subtle confetti background for modal */
+.confetti {
+  background-image: radial-gradient(circle at 10% 20%, rgba(251,191,36,0.12) 0 2px, transparent 2px),
+    radial-gradient(circle at 80% 40%, rgba(56,189,248,0.08) 0 2px, transparent 2px);
+}

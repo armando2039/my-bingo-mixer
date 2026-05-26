@@ -9,6 +9,7 @@ function App() {
     board,
     winningSquareIds,
     showBingoModal,
+    gameMode,
     startGame,
     handleSquareClick,
     resetGame,
@@ -24,6 +25,7 @@ function App() {
       <GameScreen
         board={board}
         winningSquareIds={winningSquareIds}
+        gameMode={gameMode}
         hasBingo={gameState === 'bingo'}
         onSquareClick={handleSquareClick}
         onReset={resetGame}

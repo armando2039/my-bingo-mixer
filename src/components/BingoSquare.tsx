@@ -12,8 +12,8 @@ export function BingoSquare({ square, isWinning, onClick }: BingoSquareProps) {
 
   const stateClasses = square.isMarked
     ? isWinning
-      ? 'bg-amber-200 border-amber-400 text-amber-900'
-      : 'bg-marked border-marked-border text-green-800'
+      ? 'bg-amber-200 border-amber-400 text-amber-900 animate-pop'
+      : 'bg-marked border-marked-border text-green-800 animate-pop'
     : 'bg-white text-gray-700 active:bg-gray-100';
 
   const freeSpaceClasses = square.isFreeSpace ? 'font-bold text-sm' : '';

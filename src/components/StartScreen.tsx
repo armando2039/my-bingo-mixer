@@ -1,8 +1,11 @@
+import { useState } from 'react';
+
 interface StartScreenProps {
-  onStart: () => void;
+  onStart: (mode?: 'classic' | 'speed' | 'teams') => void;
 }
 
 export function StartScreen({ onStart }: StartScreenProps) {
+  const [mode, setMode] = useState<'classic' | 'speed' | 'teams'>('classic');
   return (
     <div className="flex flex-col items-center justify-center min-h-full p-6 bg-gray-50">
       <div className="text-center max-w-sm">
@@ -18,8 +21,26 @@ export function StartScreen({ onStart }: StartScreenProps) {
           </ul>
         </div>
 
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700 mb-2">Mode</label>
+          <div className="flex gap-2">
+            <button
+              onClick={() => setMode('classic')}
+              className={`px-3 py-1 rounded-lg border ${mode === 'classic' ? 'bg-accent text-white' : 'bg-white'}`}
+            >Classic</button>
+            <button
+              onClick={() => setMode('speed')}
+              className={`px-3 py-1 rounded-lg border ${mode === 'speed' ? 'bg-accent text-white' : 'bg-white'}`}
+            >Speed</button>
+            <button
+              onClick={() => setMode('teams')}
+              className={`px-3 py-1 rounded-lg border ${mode === 'teams' ? 'bg-accent text-white' : 'bg-white'}`}
+            >Teams</button>
+          </div>
+        </div>
+
         <button
-          onClick={onStart}
+          onClick={() => onStart(mode)}
           className="w-full bg-accent text-white font-semibold py-4 px-8 rounded-lg text-lg active:bg-accent-light transition-colors"
         >
           Start Game

@@ -5,6 +5,7 @@ interface GameScreenProps {
   board: BingoSquareData[];
   winningSquareIds: Set<number>;
   hasBingo: boolean;
+  gameMode: 'classic' | 'speed' | 'teams';
   onSquareClick: (squareId: number) => void;
   onReset: () => void;
 }
@@ -13,9 +14,11 @@ export function GameScreen({
   board,
   winningSquareIds,
   hasBingo,
+  gameMode,
   onSquareClick,
   onReset,
 }: GameScreenProps) {
+  const markedCount = board.filter((s) => s.isMarked).length;
   return (
     <div className="flex flex-col min-h-full bg-gray-50">
       {/* Header */}
@@ -34,6 +37,11 @@ export function GameScreen({
       <p className="text-center text-gray-500 text-sm py-2 px-4">
         Tap a square when you find someone who matches it.
       </p>
+
+      <div className="flex items-center justify-center gap-4 py-2">
+        <div className="text-xs text-gray-600">Mode: <span className="font-semibold">{gameMode}</span></div>
+        <div className="text-xs text-gray-600">Progress: <span className="font-semibold">{markedCount}</span> marked</div>
+      </div>
 
       {/* Bingo indicator */}
       {hasBingo && (
